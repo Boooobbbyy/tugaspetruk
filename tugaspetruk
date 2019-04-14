@@ -1,0 +1,89 @@
+#include <iostream>
+using namespace std;
+struct Element
+{
+    int data;
+    Element *link;
+};
+Element *top = NULL;
+bool isEmpty()
+{
+    if(top == NULL)
+	return true; 
+	else
+	return false;
+}
+void menu()
+{system("PAUSE");
+system("CLS");
+cout<<"1.Push \n";
+cout<<"2.Pop \n";
+cout<<"3.showTop \n";
+cout<<"4.List stack \n";
+cout<<"5.Keluar \n";
+}
+void push(int a)
+{
+	Element *ptr = new Element();
+	ptr->data = a;
+	ptr->link = top;
+	top = ptr;
+	cout<<a<<" ke Stack \n\n\n";
+}	
+void pop()
+{
+	if ( isEmpty() )
+		cout<<"Kosong";
+	else
+{
+	cout<<"Stack sudah Di Pop\n";
+	Element *ptr = top;
+	top = top -> link;
+	delete(ptr);
+}}
+
+void showTop()
+{
+	if ( isEmpty() )
+	cout<<"kosong";
+	else
+	cout<<"Elemen = "<< top->data;
+	cout<<endl;
+}
+void stackLS()
+{
+	if ( isEmpty() )
+	cout<<"kosong";
+	else
+{
+	Element *temp=top;
+	while(temp!=NULL)
+{	
+	cout<<temp->data<<"\n";
+	temp=temp->link;
+}
+cout<<"\n";
+}}
+int main()
+{
+int b, c=1, a;
+while( c == 1){
+menu();
+cout<<"Pilih : ";cin>>b;
+cout<<endl<<endl;
+switch (b)
+{
+case 1: cout<<"Masukan Nilai: ";
+		cin>>a;
+		push(a);
+		break;
+case 2: pop();
+		break;
+case 3: showTop();
+		break;
+case 4: stackLS();
+		break;
+case 5: c = 0;
+		cout << endl << endl;
+		break;       
+}}return 0;}
